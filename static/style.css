@@ -2,7 +2,8 @@ body {
   font-family: "helvetica", sans-serif;
   text-align: center;
   background-color:#FAEACB;
-
+  background-image: url("../static/images/rottweiler-1785760_1920.jpg");
+  opacity: 30%;
 }
 
 img {
