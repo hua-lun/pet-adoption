@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>Pet Listing Form</title>
-    <link rel="stylesheet" href="../static/style1.css">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
     <div class="testbox">
@@ -29,13 +30,15 @@
             </div>
         </div>
         <div class="item">
-            <select>
-              <option value="">Animal type</option>
-              <option value="1">Cats</option>
-              <option value="2">Dogs</option>
-              <option value="3">Other Pets</option>
-            </select>
-          </div>
+            <label>
+                <select>
+                  <option value="">Animal type</option>
+                  <option value="1">Cats</option>
+                  <option value="2">Dogs</option>
+                  <option value="3">Other Pets</option>
+                </select>
+            </label>
+        </div>
             <h2>Tell us more!</h2>
             <div class="textarea">
                 <textarea rows="10" cols="100">
