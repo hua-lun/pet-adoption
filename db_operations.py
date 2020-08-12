@@ -140,12 +140,3 @@ def update_listing(listing_id, listing_details):
     except Exception as e:
         log.error(e)
 
-
-def delete_listing(listing_id):
-    log = current_app.logger
-    try:
-        listings_db.document(listing_id).delete()
-        return True
-    except Exception as e:
-        log.error(e)
-        return False

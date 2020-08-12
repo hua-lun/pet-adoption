@@ -298,6 +298,53 @@ a.btn-follow {
     color: white !important;
 }
 
+a.btn-delete:active {
+    border-bottom: none;
+    border-top: 1px solid #006D59;
+    background: #00896E;
+}
+
+.btn-delete {
+    background: #00936E;
+    height: 38px;
+    width: 30%;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 1.2em;
+    bottom: 1.25em;
+    font-weight: 700;
+    border-radius: 2px;
+    border-bottom: 1px solid #006D59;
+}
+
+a.btn-delete {
+    color: white !important;
+}
+
+
+a.btn-editinfo:active {
+    border-bottom: none;
+    border-top: 1px solid #5c6bc0;
+    background: #64b5f6;
+}
+
+.btn-editinfo {
+    background: #2196f3;
+    height: 38px;
+    width: 30%;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 1.2em;
+    bottom: 1.25em;
+    font-weight: 700;
+    border-radius: 2px;
+    border-bottom: 1px solid #006D59;
+}
+
+a.btn-editinfo {
+    color: white !important;
+}
+
 .mfp-content {
   display: inline-flex;
   align-items: center;

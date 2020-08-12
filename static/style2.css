@@ -1,0 +1,96 @@
+.message {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  font-weight: 300;
+  color: #2c2928;
+  opacity: 0;
+  transition: top 0.4s cubic-bezier(0.31, 0.25, 0.5, 1.5), opacity 0.3s ease-in-out;
+}
+.message .check {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(4);
+  width: 20%;
+  height: 110px;
+  background: #71c341;
+  color: white;
+  font-size: 7rem;
+  padding-top: 10%;
+  border-radius: 50%;
+  opacity: 0;
+  transition: transform 0.3s 0.35s cubic-bezier(0.31, 0.25, 0.5, 1.5), opacity 0.2s 0.35s ease-in-out;
+}
+.message .scaledown {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+.message p {
+  font-size: 2.5rem;
+  margin: 25px 0px;
+  padding: 0;
+}
+.message p:nth-child(2) {
+  font-size: 2.3rem;
+  margin: 40px 0px 0px 0px;
+}
+
+.comein {
+  top: 150px;
+  opacity: 1;
+}
+
+
+a.btn-confirmdelete:active {
+    border-bottom: none;
+    border-top: 1px solid #006D59;
+    background: #00896E;
+}
+
+.btn-confirmdelete {
+    background: #00936E;
+    height: 38px;
+    width: 40%;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 1.2em;
+    bottom: 1.25em;
+    font-weight: 700;
+    border-radius: 2px;
+    border-bottom: 1px solid #006D59;
+}
+
+a.btn-confirmdelete {
+    color: white !important;
+}
+
+
+a.btn-canceldelete:active {
+    border-bottom: none;
+    border-top: 1px solid #4dd0e1;
+    background: #00838f;
+}
+
+.btn-canceldelete {
+    background: #00acc1;
+    height: 38px;
+    width: 40%;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 1.2em;
+    bottom: 1.25em;
+    font-weight: 700;
+    border-radius: 2px;
+    border-bottom: 1px solid #006D59;
+}
+
+a.btn-canceldelete {
+    color: white !important;
+}
