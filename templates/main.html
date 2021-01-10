@@ -127,7 +127,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                 <!-- Gallery One pop up connected with JS code below -->
 
                                     {% for listing in listings %}
-                                        {% if listing.animal == 'cat' %}
+                                        {% if listing.animal == 'cat' and listing.user_email != current_user.email %}
                                             <div class="grid-item" id="{{ listing.listing_id }}">
                                                 <figure class="effect-sadie">
                                                     <img src="{{ listing.img_url }}" alt="Image" class="img-fluid tm-img">
@@ -156,7 +156,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                 <!-- Gallery Two pop up connected with JS code below -->
                                     
                                     {% for listing in listings %}
-                                        {% if listing.animal == 'dog' %}
+                                        {% if listing.animal == 'dog' and listing.user_email != current_user.email %}
                                             <div class="grid-item" id="{{ listing.listing_id }}">
                                                 <figure class="effect-sadie">
                                                     <img src="{{ listing.img_url }}" alt="Image" class="img-fluid tm-img">
@@ -185,7 +185,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                 <!-- Gallery Three pop up connected with JS code below -->
 
                                     {% for listing in listings %}
-                                        {% if listing.animal != 'cat' and listing.animal != 'dog' %}
+                                        {% if listing.animal != 'cat' and listing.animal != 'dog' and listing.user_email != current_user.email %}
                                             <div class="grid-item" id="{{ listing.listing_id }}">
                                                 <figure class="effect-sadie">
                                                     <img src="{{ listing.img_url }}" alt="Image" class="img-fluid tm-img">
@@ -214,22 +214,21 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                             <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding tm-textbox-padding-contact">
                                                 {% if current_user.is_authenticated %}
                                                     <h2 class="tm-contact-info">Have a pet for adoption?</h2>
-                                                    <form action="/" method="POST" enctype="multipart/form-data" style="box-shadow: none;">
+                                                    <form action="/createadopt" method="POST" enctype="multipart/form-data" style="box-shadow: none;">
                                                         {{ form.hidden_tag() }}
-
-                                                        <div class="item">
-                                                                {{ form.email.label }}
-                                                                {% if form.email.errors %}
-                                                                    {{ form.email(placeholder="Your Email") }}
-                                                                    <div>
-                                                                        {% for error in form.email.errors %}
-                                                                            <span>{{ error }}</span>
-                                                                        {% endfor %}
-                                                                    </div>
-                                                                {% else %}
-                                                                    {{ form.email(placeholder="Your Email") }}
-                                                                {% endif %}
-                                                        </div>
+                                                    <div class="item">
+                                                            {{ form.email.label }}
+                                                            {% if form.email.errors %}
+                                                                {{ form.email(placeholder="Your Email", value=current_user.email) }}
+                                                                <div>
+                                                                    {% for error in form.email.errors %}
+                                                                        <span>{{ error }}</span>
+                                                                    {% endfor %}
+                                                                </div>
+                                                            {% else %}
+                                                                {{ form.email(placeholder="Your Email", value=current_user.email) }}
+                                                            {% endif %}
+                                                    </div>
                                                     <div class="item">
                                                                 Pet's Name
                                                                 {% if form.pet_name.errors %}
@@ -664,18 +663,20 @@ http://www.templatemo.com/tm-500-fluid-gallery
                 var other_listing = [];
                 var user_listing = [];
                 for (listing_data of listings_data) {
-                    switch (listing_data["animal"]) {
-                        case "dog":
-                            dog_listing.push(listing_data);
-                            break;
-                        case "cat":
-                            cat_listing.push(listing_data);
-                            break;
-                        default:
-                            other_listing.push(listing_data);
-                    }
-                    if (listing_data["user_email"] == user_email)
+                    if (listing_data["user_email"] === user_email) {
                         user_listing.push(listing_data);
+                    } else {
+                        switch (listing_data["animal"]) {
+                            case "dog":
+                                dog_listing.push(listing_data);
+                                break;
+                            case "cat":
+                                cat_listing.push(listing_data);
+                                break;
+                            default:
+                                other_listing.push(listing_data);
+                        }
+                    }
                 }
 
 

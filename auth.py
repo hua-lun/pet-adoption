@@ -81,7 +81,9 @@ def login():
 
         log.info('login success')
         login_user(user, remember=True)
-        return redirect(url_for('root'))
+        if current_user.is_authenticated:
+            return redirect(url_for('root'))
+
     return render_template('login.html', loginform=form)
 
 @auth.route('/signup', methods=['GET','POST'])
@@ -109,7 +111,7 @@ def signup():
     return render_template('signup.html', form=form)
 
 @auth.route('/logout')
-@login_required
 def logout():
-    logout_user()
+    if current_user:
+        logout_user()
     return redirect(url_for('root'))
